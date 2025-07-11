@@ -1,4 +1,3 @@
-# Backend-training
 ## Backend Training
 This repository contains step to install Node.Js on Debian-based Linux system
 Node.js is a powerful, open-source JavaScript runtime built on Chrome's V8 engine that allows you to run JavaScript code outside the browser, typically on the server.
