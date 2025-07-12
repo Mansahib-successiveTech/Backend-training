@@ -1,7 +1,7 @@
 import fs from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from "url";
-import { add, sub, mul, div } from "./lib/math";
+import { add, sub, mul, div } from "./lib/math.js";
 
 // Required for __dirname in ES Modules
 const __filename = fileURLToPath(import.meta.url);
