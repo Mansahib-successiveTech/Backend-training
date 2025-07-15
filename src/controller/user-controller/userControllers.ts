@@ -1,0 +1,76 @@
+import { NextFunction, Request, Response } from "express";
+import { users } from "../../lib/mockData";
+import jwt from "jsonwebtoken"
+const My_secret_key = "your_Secret_Key";
+
+
+interface Users {
+  username: string;
+}
+function userPosts(req:Request, res:Response){
+  try {
+    const data = [
+      {
+        id: 4,
+        name: "tej",
+        role: "architec",
+      },
+    ];
+
+    res.status(201).json({
+      success: true,
+      data: data,
+    });
+  } catch (err) {
+    console.log("error", err);
+  }
+}
+
+function authUsers(req:Request, res:Response) {
+  try {
+    res.status(200).json({
+      data: users,
+      message: "protected page",
+      success: true,
+    });
+  } catch (err) {
+    console.log("error", err);
+  }
+}
+
+function useJwt(req: Request & { users?: Users }, res: Response){
+    const users = req.users;
+    res.json({
+      data: users,
+    });
+  }
+
+  function allUsers(req: Request, res: Response){
+  res.json({
+    data: users,
+    success: true,
+  });
+}
+
+
+function createToken(req: Request & { users?: Users }, res: Response, next: NextFunction) {
+    try {
+      const users = req.users;
+
+      if (!users || !users.username) {
+        return res.status(400).json({ message: "Invalid user data" });
+      }
+
+      const token = jwt.sign(users, My_secret_key, { expiresIn: "1h" });
+
+      return res.status(200).json({
+        message: "Token generated successfully",
+        token,
+      });
+    } catch (err) {
+      next(err);
+    }
+  }
+
+
+export {allUsers,useJwt,authUsers,userPosts,createToken}
