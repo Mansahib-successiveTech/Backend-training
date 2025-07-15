@@ -28,5 +28,12 @@ const result = `add,${num1},${num2},${resultAdd}\nsub,${num1},${num2},${resultSu
 
 const filePath = path.join(__dirname, 'results.csv');
 
-await fs.appendFile(filePath, result);
+// Check if file exists
+try {
+  await fs.access(filePath); 
+  await fs.appendFile(filePath, result);
+} catch (err) {
+  const header = "operation,num1,num2,result\n";
+  await fs.writeFile(filePath, header + result);
+}
 console.log(" Results saved to results.csv");
