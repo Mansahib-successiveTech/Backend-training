@@ -5,11 +5,15 @@ function errorMiddleware(
   req: Request,
   res: Response,
   next: NextFunction
-) {
+)
+ {
   console.log("middleware error handling");
+  if (res.headersSent) {
+    return next(err); 
+  }
   const errStatus = err.statusCode || 500;
   const errMsg = err.message || "Something went wrong";
-  res.status(errStatus).json({
+  return res.status(errStatus).json({
     message: errMsg,
     success: false,
     status: errStatus,

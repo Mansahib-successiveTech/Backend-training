@@ -17,3 +17,4 @@ userRoute.get("/users/userInfo",loggerMiddleware, jwtUsage, useJwt);
 userRoute.get("/users", allUsers);
 
 export { userRoute };
+

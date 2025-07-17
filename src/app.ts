@@ -9,7 +9,7 @@ const app = express();
 
 app.use(express.json());
 app.use(addCustomHeader("by mansahib"))
-app.use(rateLimiter(2,50000))
+app.use(rateLimiter(2,5000))
 app.use(loggerMiddleware);
 app.use(userRoute);
 

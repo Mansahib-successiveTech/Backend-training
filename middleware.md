@@ -3,7 +3,7 @@
 
 ##  What is Middleware?
 
-Middleware in Express.js refers to functions that execute during the **request-response cycle**. These functions have access to the `request` and `response` objects, as well as a special `next()` function that passes control to the next middleware in the stack.
+Middleware in Express.js refers to functions that execute during the **request-response cycle**. These functions have access to the `request` and `response` objects, as well as a special `next()` function that passes control to the next middleware in the stack
 
 Middleware is the **core concept** that allows Express to be flexible and modular. They can:
 

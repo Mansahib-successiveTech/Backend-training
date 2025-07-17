@@ -22,17 +22,15 @@ function middlewareAuth(
     if (username === name && password === pass) {
       console.log("verified");
 
-      // Generate JWT token
-      const token = jwt.sign({ username }, My_secret_key, { expiresIn: "1h" });
-
-      req.users = { username };
       next();
+
     } else {
       console.log("error while authentication");
       res.status(401).json({
         message: "Not authorized",
       });
     }
+
   } catch (err) {
     next(err);
   }
