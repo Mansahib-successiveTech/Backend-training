@@ -21,7 +21,10 @@ function middlewareAuth(
 
     if (username === name && password === pass) {
       console.log("verified");
-
+      const users={
+        username:username
+      }
+      req.users=users;
       next();
 
     } else {

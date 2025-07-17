@@ -73,4 +73,13 @@ function createToken(req: Request & { users?: Users }, res: Response, next: Next
   }
 
 
-export {allUsers,useJwt,authUsers,userPosts,createToken}
+  export default function displayForm(req:Request,res:Response){
+    const {username,password,age,email,address}=req.body;
+    res.status(200).json({
+      message:"user form data",
+      data:{username:username,password:password,age:age,email:email,address:address}
+    })
+
+  }
+
+export {allUsers,useJwt,authUsers,userPosts,createToken,displayForm}
