@@ -5,13 +5,20 @@ import errorMiddleware from "./middlewares/error.js";
 import { userRoute } from "./routes/userRoutes/userRoutes.js";
 import addCustomHeader from "./middlewares/customHeaders.js";
 import rateLimiter from "./middlewares/rateLimitter.js";
+import createError from "http-errors";
+import { customErrors } from "./routes/customErrorRoutes/customErrorsRoutes.js";
 const app = express();
 
 app.use(express.json());
 app.use(addCustomHeader("by mansahib"))
 app.use(rateLimiter(2,5000))
 app.use(loggerMiddleware);
-app.use(userRoute);
+app.use("/customError",customErrors)
+app.use("/users",userRoute);
+
+app.use((req, res, next) => {
+next(createError(404, 'Not Found'));
+});
 
 app.use(errorMiddleware);
 
