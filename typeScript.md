@@ -97,7 +97,7 @@ greeting = 123; // Error
 ### Explicit Type Annotations
 ```ts
 let userName: string;
-userName = "Alice";
+userName = "Alic";
 ```
 
 ## Type Aliases and Interfaces
