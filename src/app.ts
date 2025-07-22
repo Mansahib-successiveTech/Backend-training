@@ -1,15 +1,20 @@
-import  express, { Request, Response }  from "express";
-import { users } from "./lib/mockData.js";
+import express from "express";
 
-const app=express();
+import loggerMiddleware from "./middlewares/logger.js";
+import errorMiddleware from "./middlewares/error.js";
+import { userRoute } from "./routes/userRoutes/userRoutes.js";
+import addCustomHeader from "./middlewares/customHeaders.js";
+import rateLimiter from "./middlewares/rateLimitter.js";
+const app = express();
 
-app.get("/users",(req:Request,res:Response)=>{
-    res.json({
-        data:users,
-        success:true
-    })
-})
+app.use(express.json());
+app.use(addCustomHeader("by mansahib"))
+app.use(rateLimiter(2,5000))
+app.use(loggerMiddleware);
+app.use(userRoute);
 
-app.listen(3001,()=>{
-console.log("server running at http://localhost:3001 ");
-})
+app.use(errorMiddleware);
+
+app.listen(3001, () => {
+  console.log("server running at http://localhost:3001 ");
+});
