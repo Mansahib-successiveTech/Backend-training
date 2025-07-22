@@ -1,6 +1,8 @@
 import { NextFunction, Request, Response } from "express";
 
-function loggerMiddleware(req: Request, res: Response, next: NextFunction) {
+
+export class Logger{
+loggerMiddleware(req: Request, res: Response, next: NextFunction) {
   const method = req.method;
   const url = req.originalUrl;
   const timestamp = new Date().toLocaleTimeString();
@@ -9,5 +11,4 @@ function loggerMiddleware(req: Request, res: Response, next: NextFunction) {
 
   next();
 }
-
-export default loggerMiddleware;
+}

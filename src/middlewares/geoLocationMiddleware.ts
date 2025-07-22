@@ -2,8 +2,8 @@ import { Request, Response, NextFunction } from "express";
 import geoip from "geoip-lite";
 
 const allowedCountries = ["IN"]; 
-
-export const geoLocationMiddleware = (
+export class geolocation{
+geoLocationMiddleware = (
   req: Request,
   res: Response,
   next: NextFunction
@@ -28,4 +28,5 @@ export const geoLocationMiddleware = (
 
   console.log(`Access granted from ${geo.country}`);
   next();
+}
 };

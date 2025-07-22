@@ -10,7 +10,9 @@ interface Users {
 }
 
 // Middleware to authenticate with username/password and attach user to request
-function middlewareAuth(
+export class authMiddleware{
+
+middlewareAuth(
   req: Request & { users?: string | jwt.JwtPayload },
   res: Response,
   next: NextFunction
@@ -39,8 +41,7 @@ function middlewareAuth(
   }
 }
 
-// Middleware to verify JWT token
-function jwtUsage(
+jwtUsage(
   req: Request & { users?: string | jwt.JwtPayload },
   res: Response,
   next: NextFunction
@@ -61,4 +62,5 @@ function jwtUsage(
   }
 }
 
-export { middlewareAuth, jwtUsage };
+}
+

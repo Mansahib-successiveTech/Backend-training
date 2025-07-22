@@ -1,7 +1,8 @@
 import { NextFunction, Request, Response } from "express";
 
+export class RateLimiter{
 
-function rateLimiter(requestsLimit:number=3,timeLimit:number){
+rateLimiter(requestsLimit:number=3,timeLimit:number){
     const requestMap=new Map();
     return function(req:Request,res:Response,next:NextFunction){
         const ip=req?.ip;
@@ -17,7 +18,7 @@ function rateLimiter(requestsLimit:number=3,timeLimit:number){
 
         if(currentReq.count>requestsLimit){
             console.log("false exceded");
-            return res.status(400).json({
+            return res.status(429).json({
                 message:"too many request"
             });
         
@@ -28,5 +29,4 @@ function rateLimiter(requestsLimit:number=3,timeLimit:number){
     }
 
 }
-
-export default rateLimiter
+}

@@ -1,59 +1,60 @@
 import { NextFunction, Request, Response } from "express";
 import { users } from "../../lib/mockData";
-import jwt from "jsonwebtoken"
+import jwt from "jsonwebtoken";
 const My_secret_key = "your_Secret_Key";
-
 
 interface Users {
   username: string;
 }
-function userPosts(req:Request, res:Response){
-  try {
-    const data = [
-      {
-        id: 4,
-        name: "tej",
-        role: "architec",
-      },
-    ];
 
-    res.status(201).json({
-      success: true,
-      data: data,
-    });
-  } catch (err) {
-    console.log("error", err);
+export class userControllers {
+  public userPosts(req: Request, res: Response) {
+    try {
+      const data = [
+        {
+          id: 4,
+          name: "tej",
+          role: "architec",
+        },
+      ];
+
+      res.status(201).json({
+        success: true,
+        data: data,
+      });
+    } catch (err) {
+      console.log("error", err);
+    }
   }
-}
-
-function authUsers(req:Request, res:Response) {
-  try {
-    res.status(200).json({
-      data: users,
-      message: "protected page",
-      success: true,
-    });
-  } catch (err) {
-    console.log("error", err);
+  public authUsers(req: Request, res: Response) {
+    try {
+      res.status(200).json({
+        data: users,
+        message: "protected page",
+        success: true,
+      });
+    } catch (err) {
+      console.log("error", err);
+    }
   }
-}
-
-function useJwt(req: Request & { users?: Users }, res: Response){
+  public useJwt(req: Request & { users?: Users }, res: Response) {
     const users = req.users;
     res.json({
       data: users,
     });
   }
 
-  function allUsers(req: Request, res: Response){
-  res.json({
-    data: users,
-    success: true,
-  });
-}
-
-
-function createToken(req: Request & { users?: Users }, res: Response, next: NextFunction) {
+  public allUsers(req: Request, res: Response) {
+    res.json({
+      data: users,
+      success: true,
+    });
+  }
+  public createToken(
+    req: Request & { users?: Users },
+    res: Response,
+    next: NextFunction
+  ) {
     try {
       const users = req.users;
 
@@ -72,14 +73,17 @@ function createToken(req: Request & { users?: Users }, res: Response, next: Next
     }
   }
 
-
-  export default function displayForm(req:Request,res:Response){
-    const {username,password,age,email,address}=req.body;
+  public displayForm(req: Request, res: Response) {
+    const { username, password, age, email, address } = req.body;
     res.status(200).json({
-      message:"user form data",
-      data:{username:username,password:password,age:age,email:email,address:address}
-    })
-
+      message: "user form data",
+      data: {
+        username: username,
+        password: password,
+        age: age,
+        email: email,
+        address: address,
+      },
+    });
   }
-
-export {allUsers,useJwt,authUsers,userPosts,createToken,displayForm}
+}

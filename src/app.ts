@@ -1,22 +1,30 @@
-import express from "express";
-
-import loggerMiddleware from "./middlewares/logger.js";
+import express, { NextFunction, Request, Response } from "express";
 import errorMiddleware from "./middlewares/error.js";
 import { userRoute } from "./routes/userRoutes/userRoutes.js";
-import addCustomHeader from "./middlewares/customHeaders.js";
-import rateLimiter from "./middlewares/rateLimitter.js";
+import { customHeaders } from "./middlewares/customHeaders.js";
 import createError from "http-errors";
 import { customErrors } from "./routes/customErrorRoutes/customErrorsRoutes.js";
+import { Logger } from "./middlewares/logger.js";
+import { RateLimiter } from "./middlewares/rateLimitter.js";
 const app = express();
 
+const loggerMiddleware=new Logger();
+const CustomHeader=new customHeaders();
+const rateLimiterMiddleware=new RateLimiter();
+
 app.use(express.json());
-app.use(addCustomHeader("by mansahib"))
-app.use(rateLimiter(2,5000))
-app.use(loggerMiddleware);
+app.use(CustomHeader.addCustomHeader("by mansahib"))
+app.use(rateLimiterMiddleware.rateLimiter(2,5000))
+app.use(loggerMiddleware.loggerMiddleware);
 app.use("/customError",customErrors)
 app.use("/users",userRoute);
+app.get("/healthCheck",(req:Request,res:Response)=>{
+return res.json({
+  message:"server working fine"
+})
+})
 
-app.use((req, res, next) => {
+app.use((req:Request, res:Response, next:NextFunction) => {
 next(createError(404, 'Not Found'));
 });
 
