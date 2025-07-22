@@ -4,7 +4,7 @@ import { authMiddleware } from "../../middlewares/authMiddleware";
 import { Logger } from "../../middlewares/logger";
 import { validateClass } from "../../middlewares/joiMiddleware";
 import { Validator } from "../../middlewares/validator";
-import { userControllers } from "../../controller/user-controller/userControllers";
+import { userControllers } from "../../controller/userControllers";
 import { geolocation } from "../../middlewares/geoLocationMiddleware";
 
 const userRoute = express.Router();

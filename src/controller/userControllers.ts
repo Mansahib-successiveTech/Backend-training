@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { users } from "../../lib/mockData";
+import { users } from "../lib/mockData";
 import jwt from "jsonwebtoken";
 const My_secret_key = "your_Secret_Key";
 
