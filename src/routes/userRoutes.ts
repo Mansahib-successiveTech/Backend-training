@@ -1,11 +1,11 @@
 import express from "express";
-import { authMiddleware } from "../../middlewares/authMiddleware";
+import { authMiddleware } from "../middlewares/authMiddleware";
 
-import { Logger } from "../../middlewares/logger";
-import { validateClass } from "../../middlewares/joiMiddleware";
-import { Validator } from "../../middlewares/validator";
-import { userControllers } from "../../controller/userControllers";
-import { geolocation } from "../../middlewares/geoLocationMiddleware";
+import { Logger } from "../middlewares/logger";
+import { validateClass } from "../middlewares/joiMiddleware";
+import { Validator } from "../middlewares/validator";
+import { userControllers } from "../controller/userControllers";
+import { geolocation } from "../middlewares/geoLocationMiddleware";
 
 const userRoute = express.Router();
 
