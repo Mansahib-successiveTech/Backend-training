@@ -1,10 +1,10 @@
 
 import express, { NextFunction, Request, Response } from "express";
 import errorMiddleware from "./middlewares/error.js";
-import { userRoute } from "./routes/userRoutes/userRoutes.js";
+import { userRoute } from "./routes/userRoutes.js";
 import { customHeaders } from "./middlewares/customHeaders.js";
 import createError from "http-errors";
-import { customErrors } from "./routes/customErrorRoutes/customErrorsRoutes.js";
+import { customErrors } from "./routes/customErrorsRoutes.js";
 import { Logger } from "./middlewares/logger.js";
 import { RateLimiter } from "./middlewares/rateLimitter.js";
 const app = express();
