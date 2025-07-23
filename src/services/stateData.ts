@@ -7,12 +7,14 @@ export class States{
 stateData=async(req:Request,res:Response,next:NextFunction)=>{
 try{
 console.log("sending data");
-await states.insertMany([
+//await states.deleteMany();
+const a=await states.insertMany([
     {state:"delhi"},
     {state:"ghaziabad"},
     {state:"up"},
-    {state:"bihar"} 
+    {state:"bihar"}     
 ])
+console.log(a);
 res.json({
     message:"data seeded"
 })
