@@ -4,17 +4,18 @@ import { Request, Response } from "express";
 import { country } from "../models/country";
 import { countries } from "../utils/countryData";
 
-const countrySeed = async (req: Request, res: Response) => {
+export class CountrySeed{ 
+
+countrySeed = async (req: Request, res: Response) => {
   try {
     // Insert new seed data
     const post = new country({ countries: countries });
     await post.save();
     console.log(" Countries seeded successfully");
     res.status(201).json({
-      message: "Countries seeded successfully",
-      countries: post.countries,
+      message: "Countries seeded successfully"
     });
-  } catch (err: any) {
+  } catch (err:any) {
     console.error(" Error seeding countries:", err.message);
     res
       .status(500)
@@ -22,4 +23,4 @@ const countrySeed = async (req: Request, res: Response) => {
   }
 };
 
-export { countrySeed };
+}
