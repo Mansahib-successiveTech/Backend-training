@@ -1,3 +1,3 @@
-export interface rateLimiter{
+export interface IrateLimiter{
     rateLimiter(requestsLimit:number,timeLimit:number):void
 }
