@@ -20,7 +20,7 @@ app.use(rateLimiterMiddleware.rateLimiter(2, 5000));
 app.use(loggerMiddleware.loggerMiddleware);
 app.use("/customError", customErrors);
 app.use("/users", userRoute);
-app.use("/seed", countryRoute);
+app.use("/seedData", countryRoute);
 app.get(
   "/async-error",
   async (req: Request, res: Response, next: NextFunction) => {

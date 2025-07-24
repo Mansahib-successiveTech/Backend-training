@@ -7,7 +7,7 @@ function errorMiddleware(
   next: NextFunction
 )
  {
-  console.log("middleware error handling");
+  console.log("middleware error handling",err);
   if (res.headersSent) {
     return next(err); 
   }
