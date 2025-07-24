@@ -11,6 +11,7 @@ export class userControllers {
   public userPosts(req: Request, res: Response) {
     try {
       const data = [
+        
         {
           id: 4,
           name: "tej",
