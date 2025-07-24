@@ -1,8 +1,8 @@
 import { NextFunction, Request, Response } from "express";
-import { loggerMiddleware } from "../interfaces/interfaceLogger";
+import { IloggerMiddleware } from "../interfaces/ILogger";
 
 
-export class Logger implements loggerMiddleware{
+export class Logger implements IloggerMiddleware{
 loggerMiddleware(req: Request, res: Response, next: NextFunction) {
   const method = req.method;
   const url = req.originalUrl;
