@@ -1,6 +1,6 @@
 import express, { NextFunction, Request, Response } from "express";
 import jwt from "jsonwebtoken";
-import { authenticate } from "../interfaces/interfaceAuthenticate";
+import { Iauthenticate } from "../interfaces/IAuthenticate";
 const app = express();
 const My_secret_key = "your_Secret_Key";
 const name: string = "mansahib";
@@ -11,7 +11,7 @@ interface Users {
 }
 
 // Middleware to authenticate with username/password and attach user to request
-export class authMiddleware implements authenticate{
+export class authMiddleware implements Iauthenticate{
 
 middlewareAuth(
   req: Request & { users?: string | jwt.JwtPayload },
