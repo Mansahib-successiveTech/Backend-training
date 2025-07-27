@@ -15,9 +15,9 @@ export const authorization = async (req: Request, res: Response, next: NextFunct
 //   const token = authHeader.split(" ")[1];
 
   try {
-    const decoded :string | JwtPayload = jwt.verify(authHeader!, JWT_SECRET) ;
+    const decoded = jwt.verify(authHeader!, JWT_SECRET) ;
     
-    const loggedInUser = await user.findById(decoded.userId);
+    const loggedInUser  = await user.findById(decoded.userId);
     if (!loggedInUser) {
       return res.status(401).json({ message: "User not found" });
     }
