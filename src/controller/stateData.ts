@@ -2,8 +2,9 @@
 import { NextFunction, Request, Response } from "express";
 import { states } from "../models/state";
 import { StateService } from "../services/stateData.services";
+import { IStatesController } from "../interfaces/IStateData";
 
-export class States{
+export class States implements IStatesController{
 private stateServiceData=new StateService();
 stateData=async(req:Request,res:Response)=>{
 try{

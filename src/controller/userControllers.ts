@@ -1,13 +1,14 @@
 import { NextFunction, Request, Response } from "express";
 import { users } from "../lib/mockData";
 import jwt from "jsonwebtoken";
+import { IUserControllers } from "../interfaces/IUserController";
 const My_secret_key = "your_Secret_Key";
 
 interface Users {
   username: string;
 }
 
-export class userControllers {
+export class userControllers implements IUserControllers {
   public userPosts(req: Request, res: Response) {
     try {
       const data = [
