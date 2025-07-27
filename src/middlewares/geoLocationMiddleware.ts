@@ -1,8 +1,8 @@
 import { Request, Response, NextFunction } from "express";
 import geoip from "geoip-lite";
-import { IgeoLocationMiddleware } from "../interfaces/IGeolocation";
+import { IGeoLocationMiddleware } from "../interfaces/IGeolocation";
 const allowedCountries = ["IN"]; 
-export class geolocation implements IgeoLocationMiddleware{
+export class geolocation implements IGeoLocationMiddleware{
 geoLocationMiddleware = (
   req: Request,
   res: Response,

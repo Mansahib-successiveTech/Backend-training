@@ -3,8 +3,8 @@ import { user } from "../models/users";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken"
 
-export class LoginUser {
-  loginUser = async (req: Request & { users?: string | jwt.JwtPayload }, res: Response,next:NextFunction) => {
+export class LoginUserAuth  {
+  loginUserAuth = async (req: Request & { users?: string | jwt.JwtPayload }, res: Response,next:NextFunction) => {
     try {
       const { username, password } = req.body;
 
