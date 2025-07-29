@@ -8,6 +8,8 @@ import { Logger } from "./middlewares/logger.js";
 import { RateLimiter } from "./middlewares/rateLimitter.js";
 import { connectDb } from "./config/db.js";
 import { countryRoute } from "./routes/seedCountry.js";
+import { HeaderSecurity } from "./middlewares/helmetMiddleware.js";
+
 const app = express();
 connectDb();
 const loggerMiddleware = new Logger();
@@ -16,6 +18,7 @@ const rateLimiterMiddleware = new RateLimiter();
 
 app.use(express.json());
 app.use(CustomHeader.addCustomHeader("by mansahib"));
+app.use(HeaderSecurity.HelmetSecurity);
 app.use(rateLimiterMiddleware.rateLimiter(2, 5000));
 app.use(loggerMiddleware.loggerMiddleware);
 app.use("/customError", customErrors);
