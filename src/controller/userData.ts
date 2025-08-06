@@ -1,7 +1,8 @@
 import { NextFunction, Request, Response } from "express";
 import { user } from "../models/users";
+import { IUserDataController } from "../interfaces/IUserData";
 
-export class userData{
+export class userData implements IUserDataController{
 
 userpost=async(req:Request,res:Response)=>{
     try{
