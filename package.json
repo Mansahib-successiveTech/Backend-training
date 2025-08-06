@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "dist/index.js",
   "scripts": {
-    "dev": "nodemon --exec tsx src/app.ts",    
+    "dev": "nodemon --exec tsx src/app.ts",
     "build": "tsc",
     "start": "node dist/app.js"
   },
@@ -13,6 +13,7 @@
   "type": "module",
   "description": "",
   "devDependencies": {
+    "@types/bcrypt": "^6.0.0",
     "@types/express": "5.0.3",
     "@types/geoip-lite": "^1.4.4",
     "@types/joi": "^17.2.2",
@@ -27,6 +28,7 @@
     "typescript": "5.8.3"
   },
   "dependencies": {
+    "bcrypt": "^6.0.0",
     "express": "5.1.0",
     "geoip-lite": "^1.4.10",
     "joi": "^17.13.3",

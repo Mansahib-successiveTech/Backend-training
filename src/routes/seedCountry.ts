@@ -5,7 +5,13 @@ import { CountrySeed } from "../controller/countrySeed";
 const countryRoute=express.Router();
 const state=new States();
 const countrySeed=new CountrySeed();
-countryRoute.post("/state",state.stateData)
+countryRoute.post('/state',state.stateData)
 countryRoute.post('/seed-countries',countrySeed.countrySeed)
+countryRoute.post('/',(req,res)=>{
+    res.json({
+        message:"test"
+    })
+})
+
 
 export {countryRoute};

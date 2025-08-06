@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
 
-export interface IloggerMiddleware{
+export interface ILoggerMiddleware{
   loggerMiddleware(req: Request, res: Response, next: NextFunction):void
 }

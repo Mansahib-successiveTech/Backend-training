@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
-import { IrateLimiter } from "../interfaces/IRatelimiter";
+import { IRateLimiter } from "../interfaces/IRatelimiter";
 
-export class RateLimiter implements IrateLimiter{
+export class RateLimiter implements IRateLimiter{
 
 rateLimiter(requestsLimit:number=3,timeLimit:number){
     const requestMap=new Map();
