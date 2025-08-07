@@ -12,12 +12,12 @@ export class LoginService {
   async login(username: string, password: string) {
     const existingUser = await this.userRepository.findByUsername(username);
     if (!existingUser) {
-      throw { status: 404, message: "User not found" };
+      return { status: 404, message: "User not found" };
     }
 
     const isPasswordMatch = await bcrypt.compare(password, existingUser.password!);
     if (!isPasswordMatch) {
-      throw { status: 401, message: "Incorrect password" };
+      return { status: 401, message: "Incorrect password" };
     }
 
     const token = jwt.sign({ userId: existingUser._id }, JWT_SECRET, { expiresIn: "30h" });
