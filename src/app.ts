@@ -18,7 +18,6 @@ const rateLimiterMiddleware = new RateLimiter();
 
 app.use(express.json());
 app.use(CustomHeader.addCustomHeader("by mansahib"));
-app.use(HeaderSecurity.HelmetSecurity);
 app.use(rateLimiterMiddleware.rateLimiter(2, 5000));
 app.use(loggerMiddleware.loggerMiddleware);
 app.use("/customError", customErrors);
@@ -50,6 +49,6 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 
 app.use(errorMiddleware);
 
-app.listen(3001, () => {
-  console.log("server running at http://localhost:3001 ");
+app.listen(3002, () => {
+  console.log("server running at http://localhost:3002 ");
 });

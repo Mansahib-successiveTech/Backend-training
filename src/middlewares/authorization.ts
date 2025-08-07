@@ -15,7 +15,7 @@ export const authorization = async (req: Request, res: Response, next: NextFunct
 //   const token = authHeader.split(" ")[1];
 
   try {
-    const decoded = jwt.verify(authHeader!, JWT_SECRET) ;
+    const decoded = jwt.verify(authHeader!, JWT_SECRET) as JwtPayload ;
     
     const loggedInUser  = await user.findById(decoded.userId);
     if (!loggedInUser) {
