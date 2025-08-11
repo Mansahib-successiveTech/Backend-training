@@ -8,6 +8,8 @@ import { Logger } from "./middlewares/logger.js";
 import { RateLimiter } from "./middlewares/rateLimitter.js";
 import { connectDb } from "./config/db.js";
 import { countryRoute } from "./routes/seedCountry.js";
+import { HeaderSecurity } from "./middlewares/helmetMiddleware.js";
+
 const app = express();
 connectDb();
 const loggerMiddleware = new Logger();
@@ -47,6 +49,6 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 
 app.use(errorMiddleware);
 
-app.listen(3001, () => {
-  console.log("server running at http://localhost:3001 ");
+app.listen(3002, () => {
+  console.log("server running at http://localhost:3002 ");
 });

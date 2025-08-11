@@ -21,4 +21,17 @@ res.status(500).json({
 })
 }  
 }
+
+ updateRole=async(req: Request, res: Response)=>{
+   try{
+    const {id}=req.params;
+    const {role}=req.body;
+    const result=await user.findByIdAndUpdate(id,{role},{new:true});
+    res.json({
+        data:result
+    })
+   }catch(err){
+    throw err
+   }
+  }
 }

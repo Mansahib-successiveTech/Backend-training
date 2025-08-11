@@ -41,5 +41,6 @@ userRoute.post("/loginMongo",loginuserMiddleware.loginUserAuth,userController.al
 userRoute.post("/register",RegisterUser.registerUser)
 userRoute.post("/login",loginController.loginUser)
 userRoute.get("/protected",authorization,userController.allUsers)
+userRoute.put("/changeRole",userPost.updateRole);
 export { userRoute };
 
